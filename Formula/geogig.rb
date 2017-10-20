@@ -9,9 +9,10 @@ class Geogig < Formula
   depends_on :java => ["1.8+"]
 
   def install
-    bin.install "bin/geogig"
+    sbin.install "bin/geogig"
     prefix.install "libexec"
     prefix.install "misc"
+    (bin/"geogig").write_env_script "#{sbin}/geogig", Language::Java.java_home_env("1.8+")
   end
 
   test do
